@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Printify</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🖨️</text></svg>">
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <main>
+    <header>
+      <h1>Printify</h1>
+      <p id="printer" class="printer">Connecting to printer…</p>
+    </header>
+
+    <form id="form" novalidate>
+      <label id="drop" class="drop" for="file">
+        <input id="file" name="file" type="file" accept="application/pdf,.pdf" hidden>
+        <span id="drop-text"><strong>Choose a PDF</strong> or drop it here</span>
+      </label>
+
+      <div class="grid">
+        <label>Copies
+          <input name="copies" type="number" min="1" max="99" value="1" required>
+        </label>
+        <label>Pages
+          <input name="pages" type="text" placeholder="All (e.g. 1-3, 5)" autocomplete="off">
+        </label>
+        <label id="duplex-field">Double-sided
+          <select name="duplex">
+            <option value="off">Off (one side)</option>
+            <option value="long">On, flip on long edge</option>
+            <option value="short">On, flip on short edge</option>
+          </select>
+        </label>
+        <label id="color-field">Color
+          <select name="color">
+            <option value="color">Color</option>
+            <option value="mono">Black &amp; white</option>
+          </select>
+        </label>
+        <label>Paper size
+          <select name="paper" id="paper">
+            <option value="">Printer default</option>
+          </select>
+        </label>
+        <label>Scaling
+          <select name="scale">
+            <option value="fit">Fit to page</option>
+            <option value="shrink">Shrink only if too large</option>
+            <option value="actual">Actual size</option>
+          </select>
+        </label>
+      </div>
+
+      <button id="submit" type="submit" disabled>Print</button>
+      <progress id="progress" max="100" value="0" hidden></progress>
+      <p id="result" class="result" role="status" aria-live="polite"></p>
+    </form>
+
+    <section>
+      <h2>Print queue</h2>
+      <table id="jobs">
+        <thead><tr><th>Document</th><th>Status</th><th>Pages</th></tr></thead>
+        <tbody><tr><td colspan="3" class="muted">Loading…</td></tr></tbody>
+      </table>
+    </section>
+  </main>
+  <script src="/static/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,14 @@
+# Printify configuration. Copy to config.toml (install.ps1 does this once) and edit.
+# Restart Printify after changes (log out/in, or re-run install.bat).
+
+host = "0.0.0.0"   # listen on all interfaces so the LAN can reach it
+port = 8631
+
+# Empty = use the Windows default printer.
+printer = ""
+
+# Upload limit in megabytes.
+max_upload_mb = 50
+
+# Empty = <install dir>\bin\SumatraPDF.exe
+sumatra_path = ""
